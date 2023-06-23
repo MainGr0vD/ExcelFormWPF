@@ -14,43 +14,32 @@ namespace WpfApp1.Models
 {
     internal class Models
     {
-        private Worksheet RemoveCellBorders(Worksheet worksheet, int rowIndex, int columnIndex)
-        {
-            // Получение ячейки, у которой нужно удалить границы
-            Cell cell = worksheet.Cells[rowIndex, columnIndex];
-            // Удаление границ ячейки
-            Aspose.Cells.Style style = cell.GetStyle();
-            style.Borders[BorderType.TopBorder].LineStyle = CellBorderType.None;
-            style.Borders[BorderType.BottomBorder].LineStyle = CellBorderType.None;
-            style.Borders[BorderType.LeftBorder].LineStyle = CellBorderType.None;
-            style.Borders[BorderType.RightBorder].LineStyle = CellBorderType.None;
-            cell.SetStyle(style);
-            return worksheet;
-        }
 
-        private Worksheet ButtomCellBorder(Worksheet worksheet, int rowIndex, int columnIndex)
-        {
+        private Worksheet CellBorders(Worksheet worksheet, int rowIndex, int columnIndex, string styleName) {
             // Получение ячейки, у которой нужно удалить границы
             Cell cell = worksheet.Cells[rowIndex, columnIndex];
             // Удаление границ ячейки
             Aspose.Cells.Style style = cell.GetStyle();
-            style.Borders[BorderType.TopBorder].LineStyle = CellBorderType.None;
-            style.Borders[BorderType.BottomBorder].LineStyle = CellBorderType.Thin;
-            style.Borders[BorderType.LeftBorder].LineStyle = CellBorderType.None;
-            style.Borders[BorderType.RightBorder].LineStyle = CellBorderType.None;
-            cell.SetStyle(style);
-            return worksheet;
-        }
-        private Worksheet ThinCellBorder(Worksheet worksheet, int rowIndex, int columnIndex)
-        {
-            // Получение ячейки, у которой нужно удалить границы
-            Cell cell = worksheet.Cells[rowIndex, columnIndex];
-            // Удаление границ ячейки
-            Aspose.Cells.Style style = cell.GetStyle();
-            style.Borders[BorderType.TopBorder].LineStyle = CellBorderType.Thin;
-            style.Borders[BorderType.BottomBorder].LineStyle = CellBorderType.Thin;
-            style.Borders[BorderType.LeftBorder].LineStyle = CellBorderType.Thin;
-            style.Borders[BorderType.RightBorder].LineStyle = CellBorderType.Thin;
+            switch (styleName){
+                case "RemoveCellBorders":
+                    style.Borders[BorderType.TopBorder].LineStyle = CellBorderType.None;
+                    style.Borders[BorderType.BottomBorder].LineStyle = CellBorderType.None;
+                    style.Borders[BorderType.LeftBorder].LineStyle = CellBorderType.None;
+                    style.Borders[BorderType.RightBorder].LineStyle = CellBorderType.None;
+                    break;
+                case "ButtomCellBorder":
+                    style.Borders[BorderType.TopBorder].LineStyle = CellBorderType.None;
+                    style.Borders[BorderType.BottomBorder].LineStyle = CellBorderType.Thin;
+                    style.Borders[BorderType.LeftBorder].LineStyle = CellBorderType.None;
+                    style.Borders[BorderType.RightBorder].LineStyle = CellBorderType.None;
+                    break;
+                case "ThinCellBorder":
+                    style.Borders[BorderType.TopBorder].LineStyle = CellBorderType.Thin;
+                    style.Borders[BorderType.BottomBorder].LineStyle = CellBorderType.Thin;
+                    style.Borders[BorderType.LeftBorder].LineStyle = CellBorderType.Thin;
+                    style.Borders[BorderType.RightBorder].LineStyle = CellBorderType.Thin;
+                    break;
+            }
             cell.SetStyle(style);
             return worksheet;
         }
@@ -61,18 +50,7 @@ namespace WpfApp1.Models
             {
                 for (int colIndex = firstColumn; colIndex <= lastColumn; colIndex++)
                 {
-                    switch (style)
-                    {
-                        case "BottomThin":
-                            worksheet = ButtomCellBorder(worksheet, rowIndex, colIndex);
-                            break;
-                        case "RemoveBorder":
-                            worksheet = RemoveCellBorders(worksheet, rowIndex, colIndex);
-                            break;
-                        case "ThinBorder":
-                            worksheet = ThinCellBorder(worksheet, rowIndex, colIndex);
-                            break;
-                    }
+                    CellBorders(worksheet, rowIndex, colIndex, style);
                 }
             }
 
