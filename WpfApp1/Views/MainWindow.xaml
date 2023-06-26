@@ -7,20 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Click="ButtonExcel" Content="Создать Шаблон" Margin="40,354,40,30"/>
+        <Button Command="{Binding CreateExcelTemplate}" Content="Создать Шаблон" Margin="40,354,40,30"/>
         <TextBlock HorizontalAlignment="Left" Margin="40,27,0,0" TextWrapping="Wrap" Text="Введите свое имя:" VerticalAlignment="Top" Width="105"/>
-        <TextBox x:Name="namePerson" HorizontalAlignment="Left" Margin="150,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="610" Height="16" RenderTransformOrigin="0.519,1.037"/>
+        <TextBox x:Name="namePerson" Text="{Binding UserData.namePerson, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="150,27,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="610" Height="16" RenderTransformOrigin="0.519,1.037"/>
         <TextBlock HorizontalAlignment="Left" Margin="40,48,0,0" TextWrapping="Wrap" Text="Введите свой адрес:" VerticalAlignment="Top" Width="116" Height="16"/>
-        <TextBox x:Name="addressPerson" HorizontalAlignment="Left" Margin="161,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="599" Height="16" RenderTransformOrigin="0.519,1.037"/>
+        <TextBox x:Name="addressPerson" Text="{Binding UserData.addressPerson, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="161,48,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="599" Height="16" RenderTransformOrigin="0.519,1.037"/>
         <TextBlock HorizontalAlignment="Left" Margin="40,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16"><Run Language="ru-ru" Text="Укажите дату:"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="40,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="Укажите сумму задолжности(если она есть):"/>
-        <TextBox x:Name="creditPerson" HorizontalAlignment="Left" Margin="293,290,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="467" Height="16" RenderTransformOrigin="0.519,1.037"/>
+        <TextBox x:Name="creditPerson" Text="{Binding UserData.creditPerson, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="293,290,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="467" Height="16" RenderTransformOrigin="0.519,1.037"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Height="16" RenderTransformOrigin="0.507,0.69"><Run Language="ru-ru" Text="Введите данные с счетчика за этот и за прошлый месяц: "/></TextBlock>
-        <DatePicker x:Name="datePerson" HorizontalAlignment="Left" Margin="125,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.406,-0.815" Width="235"/>
+        <DatePicker x:Name="datePerson" Text="{Binding UserData.datePerson, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="125,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.406,-0.815" Width="235"/>
         <TextBlock HorizontalAlignment="Left" Margin="40,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" RenderTransformOrigin="0.526,14.044" Height="19"><Run Language="ru-ru" Text="Холодное водоснабжение"/><LineBreak/><Run Language="ru-ru"/><Run Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="260,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" RenderTransformOrigin="0.526,14.044" Height="19"><Run Language="ru-ru" Text="Показатели прошлого месяца"/><LineBreak/><Run Language="ru-ru"/><LineBreak/><Run/><Run Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="526,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.526,14.044" Height="19"><Run Text="Показатели "/><Run Language="ru-ru" Text="этого"/><Run Text=" месяца"/><LineBreak/><Run/><LineBreak/><Run/><Run Text=":"/></TextBlock>
-        <TextBox x:Name="startPerson" HorizontalAlignment="Left" Margin="260,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172" Height="16" RenderTransformOrigin="0.519,1.037"/>
-        <TextBox x:Name="finishPerson" HorizontalAlignment="Left" Margin="514,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="172" Height="16" RenderTransformOrigin="0.519,1.037"/>
+        <TextBox x:Name="startPerson" Text="{Binding UserData.startPerson, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="260,187,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="172" Height="16" RenderTransformOrigin="0.519,1.037"/>
+        <TextBox x:Name="finishPerson" Text="{Binding UserData.finishPerson, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="514,187,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="172" Height="16" RenderTransformOrigin="0.519,1.037"/>
     </Grid>
 </Window>
