@@ -2,17 +2,72 @@
 using Aspose.Cells.Drawing;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using WpfApp1.Models;
 
 namespace WpfApp1.ViewModels
 {
-    internal class MainViewModels
+
+    public class RelayCommand : ICommand
     {
+        private readonly Action _execute;
+        private readonly Func<bool> _canExecute;
+
+        public RelayCommand(Action execute, Func<bool> canExecute = null)
+        {
+            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+            _canExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return _canExecute?.Invoke() ?? true;
+        }
+
+        public void Execute(object parameter)
+        {
+            _execute();
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+    }
+
+    public class PersonDataViewModel : INotifyPropertyChanged
+    {
+
+        private PersonDataModel _personData;
+
+        public PersonDataModel PersonData
+        {
+            get { return _personData; }
+            set
+            {
+                if (_personData != value)
+                {
+                    _personData = value;
+                    OnPropertyChanged(nameof(PersonData));
+                }
+            }
+        }
+
+        public ICommand ExportToExcelCommand { get; }
+
+        public PersonDataViewModel()
+        {
+            PersonData = new PersonDataModel();
+            ExportToExcelCommand = new RelayCommand(ExportToExcel);
+        }
+
         private Worksheet CellBorders(Worksheet worksheet, int rowIndex, int columnIndex, string styleName)
         {
             // Получение ячейки, у которой нужно удалить границы
@@ -233,23 +288,31 @@ namespace WpfApp1.ViewModels
             }
         }
 
-        public void CreateExcelTemplate(string name, string address, string start, string finish, string credit, DatePicker dataTimePicker)
+        private void ExportToExcel()
         {
-            string price = GetPrice(start, finish);
+            string price = GetPrice(PersonData.startPerson, PersonData.finishPerson);
             string summ = GetSumm(price, "33,76");
-            string finalSumm = GetFinal(summ, credit);
+            string finalSumm = GetFinal(summ, PersonData.creditPerson);
 
             string monthStr = "";
             string year = "";
-            DateTime ? selectedDate = dataTimePicker.SelectedDate;
+            DateTime ? selectedDate = PersonData.datePerson.SelectedDate;
             if (selectedDate.HasValue)
             {
                 int monthInt = selectedDate.Value.Month;
                 monthStr = GetMonth(monthInt);
                 year = selectedDate.Value.Year.ToString();
             }
-            GenerateExcelTemplate(name, address, start, finish, credit, price, summ, finalSumm, monthStr, year, dataTimePicker);
+            GenerateExcelTemplate(PersonData.namePerson, PersonData.addressPerson, PersonData.startPerson, PersonData.finishPerson, PersonData.creditPerson, price, summ, finalSumm, monthStr, year, PersonData.datePerson);
             
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
 }

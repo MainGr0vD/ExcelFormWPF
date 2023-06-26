@@ -26,12 +26,6 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private void ButtonExcel(object sender, RoutedEventArgs e)
-        {
-            MainViewModels mainViewModels = new MainViewModels();
-            mainViewModels.CreateExcelTemplate(this.namePerson.Text, this.addressPerson.Text, this.startPerson.Text, this.finishPerson.Text, this.creditPerson.Text, this.datePerson);
-            MessageBox.Show("Шаблон Excel успешно создан!");
-        }
     }
 
 }

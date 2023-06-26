@@ -13,7 +13,7 @@ using System.ComponentModel;
 
 namespace WpfApp1.Models
 {
-    internal class PersonDataModel : INotifyPropertyChanged
+    public class PersonDataModel : INotifyPropertyChanged
     {
         private string _namePerson;
         private string _addressPerson;
@@ -106,6 +106,8 @@ namespace WpfApp1.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        
 
     }
 }
