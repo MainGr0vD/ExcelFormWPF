@@ -34,7 +34,15 @@ namespace WpfApp1.ViewModels
             }
         }
 
-       
+        public ICommand StartCommand { get; }
+
+        public PersonDataViewModel()
+        {
+            PersonData = new PersonDataModel();
+            StartCommand = new RelayCommand(ExportToExcel);
+        }
+
+
 
         private Worksheet CellBorders(Worksheet worksheet, int rowIndex, int columnIndex, string styleName)
         {
@@ -129,7 +137,7 @@ namespace WpfApp1.ViewModels
             return worksheet;
         }
 
-        public void GenerateExcelTemplate(string name, string address, string start, string finish, string credit, string price, string summ, string finalSumm, string monthStr, string year, DatePicker dataTimePicker)
+        public void GenerateExcelTemplate(string name, string address, string start, string finish, string credit, string price, string summ, string finalSumm, string monthStr, string year, DateTime? dataTimePicker)
         {
 
             Workbook workbook = new Workbook();
@@ -264,7 +272,7 @@ namespace WpfApp1.ViewModels
 
             string monthStr = "";
             string year = "";
-            DateTime ? selectedDate = PersonData.datePerson.SelectedDate;
+            DateTime ? selectedDate = PersonData.datePerson;
             if (selectedDate.HasValue)
             {
                 int monthInt = selectedDate.Value.Month;
@@ -272,7 +280,7 @@ namespace WpfApp1.ViewModels
                 year = selectedDate.Value.Year.ToString();
             }
             GenerateExcelTemplate(PersonData.namePerson, PersonData.addressPerson, PersonData.startPerson, PersonData.finishPerson, PersonData.creditPerson, price, summ, finalSumm, monthStr, year, PersonData.datePerson);
-            
+            MessageBox.Show("Шаблон Excel успешно создан!");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -18,7 +18,7 @@ namespace WpfApp1.Models
         private string _namePerson;
         private string _addressPerson;
         private string _creditPerson;
-        private DatePicker _datePerson;
+        private DateTime? _datePerson;
         private string _startPerson;
         private string _finishPerson;
 
@@ -61,7 +61,7 @@ namespace WpfApp1.Models
             }
         }
 
-        public DatePicker datePerson
+        public DateTime? datePerson
         {
             get { return _datePerson; }
             set
@@ -106,8 +106,5 @@ namespace WpfApp1.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        
-
     }
 }
