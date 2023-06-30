@@ -67,6 +67,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Models.cs" />
+    <Compile Include="ViewModels\ExcelTemplate.cs" />
     <Compile Include="ViewModels\MainViewModels.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
