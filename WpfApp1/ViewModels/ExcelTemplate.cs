@@ -235,20 +235,20 @@ namespace WpfApp1.ViewModels
 
         public void MyButtonClickMethod(PersonDataModel PersonData)
         {
-            string price = GetPrice(PersonData.startPerson, PersonData.finishPerson);
+            string price = GetPrice(PersonData.StartPerson, PersonData.FinishPerson);
             string summ = GetSumm(price, "33,76");
-            string finalSumm = GetFinal(summ, PersonData.creditPerson);
+            string finalSumm = GetFinal(summ, PersonData.CreditPerson);
 
             string monthStr = "";
             string year = "";
-            DateTime? selectedDate = PersonData.datePerson;
+            DateTime? selectedDate = PersonData.DatePerson;
             if (selectedDate.HasValue)
             {
                 int monthInt = selectedDate.Value.Month;
                 monthStr = GetMonth(monthInt);
                 year = selectedDate.Value.Year.ToString();
             }
-            GenerateExcelTemplate(PersonData.namePerson, PersonData.addressPerson, PersonData.startPerson, PersonData.finishPerson, PersonData.creditPerson, price, summ, finalSumm, monthStr, year, PersonData.datePerson);
+            GenerateExcelTemplate(PersonData.NamePerson, PersonData.AddressPerson, PersonData.StartPerson, PersonData.FinishPerson, PersonData.CreditPerson, price, summ, finalSumm, monthStr, year, PersonData.DatePerson);
             MessageBox.Show("Шаблон Excel успешно создан!");
         }
 
