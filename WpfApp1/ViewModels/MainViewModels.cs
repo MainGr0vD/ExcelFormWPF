@@ -16,17 +16,17 @@ namespace WpfApp1.ViewModels
     public class PersonData : INotifyPropertyChanged
     {
 
-        private PersonDataModel _personData;
+        private PersonDataModel _person;
 
         public PersonDataModel Person
         {
-            get { return _personData; }
+            get { return _person; }
             set
             {
-                if (_personData != value)
+                if (_person != value)
                 {
-                    _personData = value;
-                    OnPropertyChanged(nameof(PersonData));
+                    _person = value;
+                    OnPropertyChanged(nameof(Person));
                 }
             }
         }

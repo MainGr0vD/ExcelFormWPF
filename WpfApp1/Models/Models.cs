@@ -21,6 +21,20 @@ namespace WpfApp1.Models
         private DateTime? _datePerson;
         private string _startPerson;
         private string _finishPerson;
+        private string _stringPerson;
+
+        public string stringPerson
+        {
+            get { return _stringPerson; }
+            set
+            {
+                if (_stringPerson != value)
+                {
+                    _stringPerson = value;
+                    OnPropertyChanged(nameof(stringPerson));
+                }
+            }
+        }
 
         public string namePerson
         {
