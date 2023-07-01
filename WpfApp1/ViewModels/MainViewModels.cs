@@ -13,15 +13,12 @@ using WpfApp1.Models;
 
 namespace WpfApp1.ViewModels
 {
-
-   
-
-    public class PersonDataViewModel : INotifyPropertyChanged
+    public class PersonData : INotifyPropertyChanged
     {
 
         private PersonDataModel _personData;
 
-        public PersonDataModel PersonData
+        public PersonDataModel Person
         {
             get { return _personData; }
             set
@@ -36,16 +33,19 @@ namespace WpfApp1.ViewModels
 
         public ICommand StartCommand { get; }
 
-        public PersonDataViewModel()
+        private ExcelTemplate excelTemplate;
+
+        public PersonData()
         {
-            PersonData = new PersonDataModel();
-            ExcelTemplate excelTemplate = new ExcelTemplate();
-            StartCommand = new RelayCommand(excelTemplate.ExportToExcel(PersonData));
+            Person = new PersonDataModel();
+            excelTemplate = new ExcelTemplate();
+            excelTemplate.ButtonClicked += MyButtonClickHandler;
+            StartCommand = new RelayCommand(excelTemplate.OnButtonClick);
         }
-
-
-
-       
+        private void MyButtonClickHandler()
+        {
+            excelTemplate.MyButtonClickMethod(Person);
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
