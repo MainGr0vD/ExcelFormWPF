@@ -23,7 +23,7 @@ namespace WpfApp1.Models
         private string _finishPerson;
 
 
-        public string namePerson
+        public string NamePerson
         {
             get { return _namePerson; }
             set
@@ -31,12 +31,12 @@ namespace WpfApp1.Models
                 if (_namePerson != value)
                 {
                     _namePerson = value;
-                    OnPropertyChanged(nameof(namePerson));
+                    OnPropertyChanged(nameof(NamePerson));
                 }
             }
         }
 
-        public string addressPerson
+        public string AddressPerson
         {
             get { return _addressPerson; }
             set
@@ -44,12 +44,12 @@ namespace WpfApp1.Models
                 if (_addressPerson != value)
                 {
                     _addressPerson = value;
-                    OnPropertyChanged(nameof(addressPerson));
+                    OnPropertyChanged(nameof(AddressPerson));
                 }
             }
         }
 
-        public string creditPerson
+        public string CreditPerson
         {
             get { return _creditPerson; }
             set
@@ -57,12 +57,12 @@ namespace WpfApp1.Models
                 if (_creditPerson != value)
                 {
                     _creditPerson = value;
-                    OnPropertyChanged(nameof(creditPerson));
+                    OnPropertyChanged(nameof(CreditPerson));
                 }
             }
         }
 
-        public DateTime? datePerson
+        public DateTime? DatePerson
         {
             get { return _datePerson; }
             set
@@ -70,12 +70,12 @@ namespace WpfApp1.Models
                 if (_datePerson != value)
                 {
                     _datePerson = value;
-                    OnPropertyChanged(nameof(datePerson));
+                    OnPropertyChanged(nameof(DatePerson));
                 }
             }
         }
 
-        public string finishPerson
+        public string FinishPerson
         {
             get { return _finishPerson; }
             set
@@ -83,12 +83,12 @@ namespace WpfApp1.Models
                 if (_finishPerson != value)
                 {
                     _finishPerson = value;
-                    OnPropertyChanged(nameof(finishPerson));
+                    OnPropertyChanged(nameof(FinishPerson));
                 }
             }
         }
 
-        public string startPerson
+        public string StartPerson
         {
             get { return _startPerson; }
             set
@@ -96,7 +96,7 @@ namespace WpfApp1.Models
                 if (_startPerson != value)
                 {
                     _startPerson = value;
-                    OnPropertyChanged(nameof(startPerson));
+                    OnPropertyChanged(nameof(StartPerson));
                 }
             }
         }
